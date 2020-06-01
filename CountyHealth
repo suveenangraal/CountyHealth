@@ -1,0 +1,22 @@
+setwd("~/County Health Rankings")
+
+
+unadlm <- lm(cvmortality ~ foodindex)
+lm <- lm(cvmortality ~ foodindex +   X..African.American + X..Asian
+         + X..Hispanic  + X..Female, uninsured_adults +collegegraduation + rural + smoker, data =  base.data)
+
+
+
+ggplot(base.data, aes(x = foodindex, y = cvmortality)) + 
+  geom_point() + ylim(2500,20000) + xlim(0,200) +
+  stat_smooth(method = "lm", col = "red") + 
+  theme(axis.text.x = element_text(size = 50,  hjust = .5, vjust = .5),
+        axis.text.y = element_text(size = 50,  hjust = 1, vjust = 0),  
+        axis.title.x = element_text(size = 65,  hjust = .5, vjust = 0),
+        axis.title.y = element_text(size = 65,  hjust = .5, vjust = .5))
+		
+    
+
+unadlm <- lm(cvmortality ~ foodindex)
+summary(lm)
+
